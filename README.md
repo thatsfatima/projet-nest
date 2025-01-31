@@ -57,6 +57,119 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+Swagger Documentation
+Book API
+POST /book
+Description: Create a new book.
+Request Body:
+json
+CopyInsert
+{
+  "title": "",
+  "author": "",
+  "publishedDate": "",
+  "category": ""
+}
+Responses:
+201: Livre créé avec succès.
+500: Erreur serveur interne.
+GET /book
+Description: Retrieve a list of books.
+Query Parameters:
+page: Number of the page for pagination.
+limit: Number of items per page.
+sortBy: Field to sort the books.
+order: Sort order (asc or desc).
+Responses:
+200: Retourne une liste de livres.
+500: Erreur serveur interne.
+GET /book/:id
+Description: Retrieve a book by ID.
+Responses:
+200: Retourne le livre avec l'ID spécifié.
+404: Livre non trouvé.
+500: Erreur serveur interne.
+PATCH /book/:id
+Description: Update a book by ID.
+Request Body:
+json
+CopyInsert
+{
+  "title": "",
+  "author": "",
+  "publishedDate": "",
+  "category": ""
+}
+Responses:
+200: Livre mis à jour avec succès.
+404: Livre non trouvé.
+500: Erreur serveur interne.
+DELETE /book/:id
+Description: Delete a book by ID.
+Responses:
+204: Livre supprimé avec succès.
+404: Livre non trouvé.
+500: Erreur serveur interne.
+Auth API
+POST /auth/register
+Description: Register a new user.
+Request Body:
+json
+CopyInsert
+{
+  "username": "",
+  "password": "",
+  "role": ""
+}
+Responses:
+201: User ajouté avec succès.
+409: Le username existe déjà.
+500: Erreur serveur.
+POST /auth/login
+Description: Login a user.
+Request Body:
+json
+CopyInsert
+{
+  "username": "",
+  "password": ""
+}
+Responses:
+200: User connecté avec succès.
+401: Identifiants incorrects.
+500: Erreur serveur.
+GET /auth/:id
+Description: Retrieve user by ID.
+Responses:
+200: Liste des utilisateurs.
+500: Erreur serveur.
+GET /auth
+Description: Retrieve all users.
+Responses:
+200: Liste des utilisateurs.
+500: Erreur serveur.
+POST /auth/logout
+Description: Logout a user.
+Responses:
+200: Utilisateur déconnecté avec succès.
+500: Erreur serveur.
+Review API
+POST /review
+Description: Add a new review.
+Query Parameters:
+bookId: ID of the book.
+userId: ID of the user.
+comment: Review comment.
+rating: Review rating.
+Responses:
+201: Commentaire ajouté avec succès.
+500: Erreur serveur interne.
+GET /review/:bookId
+Description: Retrieve reviews for a specific book.
+Responses:
+200: Commentaires du livre trouvés avec succès.
+404: Pas de commentaires pour ce livre.
+500: Erreur serveur interne.
 
 ## Deployment
 
