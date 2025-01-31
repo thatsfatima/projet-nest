@@ -57,119 +57,119 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-Swagger Documentation
-Book API
-POST /book
-Description: Create a new book.
-Request Body:
-json
-CopyInsert
-{
-  "title": "",
-  "author": "",
-  "publishedDate": "",
-  "category": ""
-}
-Responses:
-201: Livre créé avec succès.
-500: Erreur serveur interne.
-GET /book
-Description: Retrieve a list of books.
-Query Parameters:
-page: Number of the page for pagination.
-limit: Number of items per page.
-sortBy: Field to sort the books.
-order: Sort order (asc or desc).
-Responses:
-200: Retourne une liste de livres.
-500: Erreur serveur interne.
-GET /book/:id
-Description: Retrieve a book by ID.
-Responses:
-200: Retourne le livre avec l'ID spécifié.
-404: Livre non trouvé.
-500: Erreur serveur interne.
-PATCH /book/:id
-Description: Update a book by ID.
-Request Body:
-json
-CopyInsert
-{
-  "title": "",
-  "author": "",
-  "publishedDate": "",
-  "category": ""
-}
-Responses:
-200: Livre mis à jour avec succès.
-404: Livre non trouvé.
-500: Erreur serveur interne.
-DELETE /book/:id
-Description: Delete a book by ID.
-Responses:
-204: Livre supprimé avec succès.
-404: Livre non trouvé.
-500: Erreur serveur interne.
-Auth API
-POST /auth/register
-Description: Register a new user.
-Request Body:
-json
-CopyInsert
-{
-  "username": "",
-  "password": "",
-  "role": ""
-}
-Responses:
-201: User ajouté avec succès.
-409: Le username existe déjà.
-500: Erreur serveur.
-POST /auth/login
-Description: Login a user.
-Request Body:
-json
-CopyInsert
-{
-  "username": "",
-  "password": ""
-}
-Responses:
-200: User connecté avec succès.
-401: Identifiants incorrects.
-500: Erreur serveur.
-GET /auth/:id
-Description: Retrieve user by ID.
-Responses:
-200: Liste des utilisateurs.
-500: Erreur serveur.
-GET /auth
-Description: Retrieve all users.
-Responses:
-200: Liste des utilisateurs.
-500: Erreur serveur.
+## Swagger Documentation
+
+### Auth API
+#### POST /auth/register
+- **Description**: Enregistrer un nouvel utilisateur.
+- **Request Body**:
+  ```json
+  {
+    "username": "",
+    "password": "",
+    "role": ""
+  }
+- **Réponses**:
+- 201: Utilisateur ajouté avec succès.
+- 409: Le nom d'utilisateur existe déjà.
+- 500: Erreur serveur.
+#### POST /auth/login
+- **Description**: Connexion d'un utilisateur.
+- **Request Body**:
+  ```json
+  {
+    "username": "",
+    "password": ""
+  }
+- **Responses**:
+- 200: User connecté avec succès.
+- 401: Identifiants incorrects.
+- 500: Erreur serveur.
+#### GET /auth/:id
+- **Description**: Recupérer un utilisateur par ID.
+- **Responses**:
+- 200: Liste des utilisateurs.
+- 500: Erreur serveur.
+#### GET /auth
+- **Description**: Recupérer tous les utilisateurs.
+- **Responses**:
+- 200: Liste des utilisateurs.
+- 500: Erreur serveur.
 POST /auth/logout
-Description: Logout a user.
-Responses:
-200: Utilisateur déconnecté avec succès.
-500: Erreur serveur.
-Review API
-POST /review
-Description: Add a new review.
-Query Parameters:
-bookId: ID of the book.
-userId: ID of the user.
-comment: Review comment.
-rating: Review rating.
-Responses:
-201: Commentaire ajouté avec succès.
-500: Erreur serveur interne.
-GET /review/:bookId
-Description: Retrieve reviews for a specific book.
-Responses:
-200: Commentaires du livre trouvés avec succès.
-404: Pas de commentaires pour ce livre.
-500: Erreur serveur interne.
+- **Description**: Déconnecter un user.
+- **Responses**:
+- 200: Utilisateur déconnecté avec succès.
+- 500: Erreur serveur.
+
+### Book API
+#### POST /book
+- **Description**: Créer un nouveau livre.
+- **Request Body**:
+  ```json
+  {
+    "title": "",
+    "author": "",
+    "publishedDate": "",
+    "category": ""
+  }
+- **Responses**:
+- 201: Livre créé avec succès.
+- 500: Erreur serveur interne.
+#### GET /book
+- **Description**: Récupérer une liste de livres.
+- **Paramètres de requête** :
+  - `page`: Numéro de la page pour la pagination.
+  - `limit`: Nombre d'éléments par page.
+  - `sortBy`: Champ par lequel trier les livres.
+  - `order`: Ordre de tri (`asc` ou `desc`).
+- **Réponses** :
+  - 200: Retourne une liste de livres.
+  - 500: Erreur serveur interne.
+#### GET /book/:id
+- **Description**: Récupérer un livre par ID.
+- **Réponses**:
+  - 200: Retourne le livre avec l'ID spécifié.
+  - 404: Livre non trouvé.
+  - 500: Erreur serveur interne.
+
+#### PATCH /book/:id
+- **Description**: Mettre à jour un livre par ID.
+- **Request Body**:
+  ```json
+  {
+    "title": "",
+    "author": "",
+    "publishedDate": "",
+    "category": ""
+  }
+- **Responses**:
+  - 200: Livre mis à jour avec succès.
+  - 404: Livre non trouvé.
+  - 500: Erreur serveur interne.
+#### DELETE /book/:id
+- **Description**: Supprimer un livre par ID.
+- **Réponses**:
+  - 204: Livre supprimé avec succès.
+  - 404: Livre non trouvé.
+  - 500: Erreur serveur interne.
+
+### Review API
+#### POST /review
+- **Description**: Ajouter un commentaire.
+- **Paramètres de requête** :
+  - bookId: ID du livre.
+  - userId: ID de l'utilisateur.
+  - comment: Commentaire.
+  - rating: Note.
+- **Responses**:
+  - 201: Commentaire ajouté avec succès.
+  - 500: Erreur serveur interne.
+#### GET /review/:bookId
+- **Description**: Accéder à un commentaire.
+- **Responses**:
+  - 200: Commentaires du livre trouvés avec succès.
+  - 404: Pas de commentaires pour ce livre.
+  - 500: Erreur serveur interne.
 
 ## Deployment
 
