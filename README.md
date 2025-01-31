@@ -59,6 +59,10 @@ $ npm run test:cov
 ```
 ## Swagger Documentation
 
+```url
+http://localhost:3000/api/docs
+```
+
 ### Auth API
 #### POST /auth/register
 - **Description**: Enregistrer un nouvel utilisateur.
